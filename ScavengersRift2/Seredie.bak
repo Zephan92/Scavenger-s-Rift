@@ -1,0 +1,102 @@
+import java.io.*;
+public class TubewoodForest
+{
+	private GeneralMethods gm = new GeneralMethods();//////////////////////////////////////////////////////// Access to the general methods
+	private int introductionCount_Scavenge;
+	private String menuAnswer;/////////////////////////////////////////////////////////////////////////////// Menu answer placeholder
+	private boolean done;//////////////////////////////////////////////////////////////////////////////////// For use in loops
+	private String tubewoodForestHeader;
+	private String tubewoodForestOptions;
+	private String tubewoodForestPrompt;
+	private String tubewoodForestDisplay;
+	
+	public TubewoodForest() throws IOException
+	{
+		tubewoodForestHeader = ////////////////////////////////////////////////////////////////////////////////////// Main header
+		"\n\n\n      ____________________________________________________________________      " + 
+			"     |     __________________________________________________________     |     " +
+			"     |    |------------------||                  ||------------------|    |     " +
+			"     |    |------------------|| TUBEWOOD FOREST  ||------------------|    |     " +
+			"     |    |------------------||__________________||------------------|    |     " +
+			"     \\____________________________________________________________________/     \n\n";
+
+		tubewoodForestOptions = ///////////////////////////////////////////////////////////////////////////////////// 
+			"                ________________________________________________                " +
+			"               |    __________________      __________________  |               " +
+			"               | 1.|                  |  2.|                  | |               " +
+			"               |   |     SCAVENGE     |    |      GATHER      | |               " +
+			"               |   |__________________|    |__________________| |               " +
+			"               |    __________________      __________________  |               " +
+			"               | 3.|                  |  4.|                  | |               " +
+			"               |   |      WANDER      |    |       BACK       | |               " +
+			"               |   |__________________|    |__________________| |               " +
+			"               |________________________________________________|               \n";
+		tubewoodForestPrompt = "What would you like to do? ";//////////////////////////////////////////////////////// Main prompt
+		tubewoodForestDisplay = tubewoodForestHeader + tubewoodForestOptions + tubewoodForestPrompt;///////////////////////////////////// Main menu/ title screen
+		introductionCount_Scavenge = 0;
+	}
+
+
+
+	public void changeTubewoodOptions_Main()
+	{
+		tubewoodForestOptions = ///////////////////////////////////////////////////////////////////////////////////// 
+			"                ________________________________________________                " +
+			"               |    __________________      __________________  |               " +
+			"               | 1.|                  |  2.|                  | |               " +
+			"               |   |     SCAVENGE     |    |      GATHER      | |               " +
+			"               |   |__________________|    |__________________| |               " +
+			"               |    __________________      __________________  |               " +
+			"               | 3.|                  |  4.|                  | |               " +
+			"               |   |      WANDER      |    |       BACK       | |               " +
+			"               |   |__________________|    |__________________| |               " +
+			"               |________________________________________________|               \n";
+		tubewoodForestPrompt = "What would you like to do? ";//////////////////////////////////////////////////////// Main prompt
+	}
+
+
+
+	public void changeTubewoodOptions_Scavenge()
+	{
+		tubewoodForestOptions = ///////////////////////////////////////////////////////////////////////////////////// 
+			"                ________________________________________________                " +
+			"               |    __________________      __________________  |               " +
+			"               | 1.|                  |  2.|                  | |               " +
+			"               |   |     SCAVENGE     |    |      GATHER      | |               " +
+			"               |   |__________________|    |__________________| |               " +
+			"               |    __________________      __________________  |               " +
+			"               | 3.|                  |  4.|                  | |               " +
+			"               |   |      WANDER      |    |       BACK       | |               " +
+			"               |   |__________________|    |__________________| |               " +
+			"               |________________________________________________|               \n";
+		tubewoodForestPrompt = "What would you like to do? ";//////////////////////////////////////////////////////// Main prompt
+	}
+
+
+	public String getTubewoodForestDisplay()////////////////////////////////////////////////////////////////// This method displays the menu
+	{//////////////////////////////////////////////////////////////////////////////////////////////////////// 
+		tubewoodForestDisplay = tubewoodForestHeader + tubewoodForestOptions + tubewoodForestPrompt;/////////////////////////
+		return tubewoodForestDisplay;///////////////////////////////////////////////////////////////////////// 
+	}//////////////////////////////////////////////////////////////////////////////////////////////////////// getTheColonyMenuDisplay() End.
+
+
+
+
+	public String printTubewoodForestMenu()/////////////////////////////////////////////////////////////////////// This method displays the full Main Menu
+	{////////////////////////////////////////////////////////////////////////////////////////////////////////
+		String display = getTubewoodForestDisplay();////////////////////////////////////////////////////////// 
+		System.out.print(display);/////////////////////////////////////////////////////////////////////////// 
+		menuAnswer = gm.promptUser();//////////////////////////////////////////////////////////////////////// 
+		return menuAnswer;/////////////////////////////////////////////////////////////////////////////////// 
+	}//////////////////////////////////////////////////////////////////////////////////////////////////////// printTheColonyMenu() End.
+
+	public void scavenge_TubewoodForest() throws IOException
+	{
+		StoryLines story = new StoryLines();
+		if (introductionCount_Scavenge == 0)
+		{
+			story.introduction_Scavenge();
+			introductionCount_Scavenge = 1;
+		}
+	}
+}

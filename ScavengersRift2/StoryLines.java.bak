@@ -1,0 +1,165 @@
+import java.util.Scanner;
+import java.io.*;
+public class StoryLines
+{
+	private Scanner scan = new Scanner(System.in);/////////////////////////////////////////////////////////// System.in Scanner
+	private boolean done;//////////////////////////////////////////////////////////////////////////////////// 
+	private String player;/////////////////////////////////////////////////////////////////////////////////// placeholder player name
+
+	public StoryLines() throws IOException/////////////////////////////////////////////////////////////////// Default constructor
+	{//////////////////////////////////////////////////////////////////////////////////////////////////////// Start of default constructor
+	}//////////////////////////////////////////////////////////////////////////////////////////////////////// End of default constructor
+
+
+
+
+
+	public void storyLineEvent_StartNewGame() throws IOException///////////////////////////////////// This method is the welcome event to the game
+	{	
+		GeneralMethods gm = new GeneralMethods();//////////////////////////////////////////////////// Access to the general methods
+		TheColony theColony = new TheColony();/////////////////////////////////////////////////////// Access to the colony
+		Save save = new Save();////////////////////////////////////////////////////////////////////// Access to player files
+		System.out.println("\n" +
+		"                ________ ______________________________ ________                " +
+		"      _________|        |                              |        |_________      " +
+		"     |_________ >-------| Welcome to Scavenger's Rift! |-------< _________|     " +
+		"               |________|______________________________|________|               ");
+
+		System.out.println("\n" +
+		"           __________________________________________________________           " +
+		"          |                                                          |          " +
+		"          | RORY:  This must be your first time here!                |          " +
+		"          | My name is Rory, nice to meet you! I crashed here        |          " +
+		"          | not too long ago. It is a wonderful new world to explore.|          " +
+		"          | I come from a very social species on my planet Morlastat.|          " +
+		"          | You might call me an alien! Anyway, on my planet we      |          " +
+		"          | create vast cities filled with millions of Morlastians.  |          " +
+		"          | I miss Morlamast very much, so much so, I decided to     |          " +
+		"          | build a colony here on Scavenger's Rift!                 |          " +
+		"          |                                                          |          " +
+		"          | Please join me on this endeavor! I would very much       |          " +
+		"          | appreciate the company. So what do you say? Are you in?  |          " +
+		"          |__________________________________________________________|          \n\n");
+
+		System.out.print("Would you like to help Rory out? ");
+		int count = 0;
+		do
+		{
+			String menuAnswer =gm.promptUser();
+			if (menuAnswer.equals("Y"))
+			{
+				done = true;
+			}
+			else
+			{
+				if (count == 0)
+				{
+					System.out.println("\n\n\n" +
+					"           __________________________________________________________           " +
+					"          |                                                          |          " +
+					"          | RORY: Why not? It shall be fun! What do you say?         |          " +
+					"          |__________________________________________________________|          ");
+					System.out.print("\n\nWould you like to help Rory out? ");
+				}
+				if (count == 1)
+				{
+					System.out.println("\n\n\n" +
+					"           __________________________________________________________           " +
+					"          |                                                          |          " +
+					"          | RORY: I can do this alone, but it sure would be a help.  |          " +
+					"          | It would be great to have you. So, how about it?         |          " +
+					"          |__________________________________________________________|          ");
+					System.out.print("\n\nWould you like to help Rory out? ");
+				}
+				if (count == 2)
+				{
+					System.out.println("\n\n\n" +
+					"           __________________________________________________________           " +
+					"          |                                                          |          " +
+					"          | RORY: I won't take no for an answer! Will you join me?   |          " +
+					"          |__________________________________________________________|          ");
+					System.out.print("\n\nWould you like to help Rory out? ");
+				}
+				if (count == 3)
+				{
+					System.out.println("\n\n\n" +
+					"           __________________________________________________________           " +
+					"          |                                                          |          " +
+					"          | RORY: Oh my! You are getting quite rude! Well?           |          " +
+					"          |__________________________________________________________|          ");
+					System.out.print("\n\nWould you like to help Rory out? ");
+				}
+				if (count == 4)
+				{
+					System.out.println("\n\n\n" +
+					"           __________________________________________________________           " +
+					"          |                                                          |          " +
+					"          | RORY: Surely, this will be quite an adventure, but I can |          " +
+					"          | only take so much of this. Your answer?                  |          " +
+					"          |__________________________________________________________|          ");
+					System.out.print("\n\nWould you like to help Rory out? ");
+				}
+				if (count == 5)
+				{
+					System.out.println("\n\n\n" +
+					"           __________________________________________________________           " +
+					"          |                                                          |          " +
+					"          | RORY: That is it, This is the last time I will ask.      |          " +
+					"          | Will you help me out or not?                             |          " +
+					"          |__________________________________________________________|          ");
+					System.out.print("\n\nWould you like to help Rory out? ");
+				}
+				if (count == 6)
+				{
+					System.out.println("\n\n\n" +
+					"           __________________________________________________________           " +
+					"          |                                                          |          " +
+					"          | RORY: That was your last chance buddy!!! I have better   |          " +
+					"          | things to do with my time! Like this for instance!!      |          " +
+					"          |__________________________________________________________|          ");
+					System.out.print(
+				"\n\n\n                                     ...                                        " +
+				"\n\n\n                                    .....                                       " +
+				"\n\n\n                                     ...                                        " +
+				"\n\n\n                              System32 Deleted                                  " +
+				"\n\n\n           __________________________________________________________           " +
+					  "          |                                                          |          " +
+					  "          |              RORY: Have fun with that, jerk!             |          " +
+					  "          |__________________________________________________________|          \n\n\n");
+				System.exit(0);
+				}
+				count++;///////////////////////////////////////////////////////////////////////////////// 
+			}
+		}
+		while (done != true);
+		done = false;
+		System.out.println("\nRORY: Great to hear it!!! I look forward to working with you!");
+		player = save.getPlayer1Name();
+
+		System.out.println("\n\nRORY: See you later " + player + "!\n");
+		System.out.print("Press and enter any key to head to The Colony: ");
+		String garbage = scan.next();
+		int storyEvent = save.getStoryEvent() + 1;
+		save.setStoryEvent(storyEvent);
+		theColony.goTo_TheColony();
+	}
+
+	public void storyLineEvent_TheColony()/////////////////////////////////////////////////////////////////// This Method is the first event in the colony
+	{//////////////////////////////////////////////////////////////////////////////////////////////////////// It's an intro to the place
+		System.out.println("Welcome");///////////////////////////////////////////////////////////////////////
+	}//////////////////////////////////////////////////////////////////////////////////////////////////////// storyLineEvent_TheColony() End.
+
+
+
+
+
+	public void checkClass()///////////////////////////////////////////////////////////////////////////////// This method is a tester
+	{////////////////////////////////////////////////////////////////////////////////////////////////////////
+		System.out.println("This class works fine");/////////////////////////////////////////////////////////
+	}//////////////////////////////////////////////////////////////////////////////////////////////////////// checkClass() End.
+
+
+
+
+
+}
